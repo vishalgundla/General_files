@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuuk WebApp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+body{
+    margin: 2% 2% 0 2%;
+    font-family: 'Dosis', sans-serif;
+}
+#landing-section{
+    width: 100%;
+    height: 85vh;
+    padding: 0 5%;
+    box-sizing: border-box;
+    background-image: linear-gradient(76deg, rgba(193, 195, 204, 0.83) 35%, rgba(193, 195, 204, 0.28) 65%), url("https://nuuk-e3eaa.firebaseapp.com/assets/img/slide-2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+.dropdown{
+    margin-left: 5px;
+}
+#navbar{    
+    position: absolute;
+    display: flex;
+    width: 100%;
+    max-width: calc(100% - 4% );
+    left: 5%;
+    margin-top: 2%;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 10;
+    background-color: white;
+}
+.menu{   
+    color: #414147;
+    text-decoration: none;
+    
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+.verticle-line-wrapper{
+    position: relative;
+    padding: 29px 15px;
+    cursor: pointer;
+    /* width: auto; */
+}
+.verticle-line::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 0px;
+    background-color: rgb(228,115,18);
+    top: -1px;
+    left: 50%;
+    visibility: hidden;
+    transition: all 200ms ease;
+}
+.verticle-line-wrapper:hover .verticle-line::before{
+    visibility: visible;
+    height: 30px;
+}
+.verticle-line::after{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 0px;
+    background-color: rgb(228,115,18);
+    bottom: 0;
+    left: 50%;
+    visibility: hidden;
+    transition: all 500ms ease;
+}
+.verticle-line-wrapper:hover .verticle-line::after{
+    visibility: visible;
+    height: 27px;
+}
+.verticle-line-wrapper:hover .menu{
+    color: #e47312;
+    transition: all 200ms ease;
+}
+#home{
+    color: #e47312;
+}
+#free-quote{
+    margin-left: 20px;
+    padding: 34px 28px 31px;
+    background-color: rgb(228,115,18);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 300ms ease;
+}
+#free-quote:hover{
+    background-color: rgba(228,115,18,0.8);
+}
+header{
+    position: absolute;
+    z-index: 9;
+    height: 50px;
+    width: 90%;
+    text-align: end;
+}
+.logo{
+    width: 90px;
+}
+#logo-div{
+    position: absolute;
+    height: 110px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: rgb(228,115,18);
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+#heading-section{
+    position: absolute;
+    margin-top: 10%;
+}
+#heading-section h1{
+    color: #fff;
+    font-size: 62px;
+    font-weight: 600;
+    line-height: 70px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+}
+#heading-section p{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: hsla(0, 0%, 100%, 0.7);
+}
+#heading-section button{
+    margin-top: 30px;
+    font-size: 12px;
+    background-color: #e47312;
+    padding: 15px 25px;
+    transition: all 300ms ease;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+#heading-section button:hover{
+    background-color: rgba(228,115,18,0.7);
+}
+#pages-dropdown{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    top: 49px;
+    display: none;
+}
+#pages-dropdown-wrapper{
+    position: relative;
+}
+#pages-dropdown span{
+    display: inline-block;
+    text-align: start;
+    color: #717177;
+    font-size: 12px;
+    font-weight: 600;
+    width: 100px;
+    padding: 15px 20px;
+    cursor: pointer;
+    text-transform: uppercase; 
+}
+#pages-dropdown span:hover{
+    color: #e47312;
+    transition: all 200ms ease;
+    background-color: #F1F1F7;
+}
+.verticle-line-wrapper:hover #pages-dropdown{
+    display: block;
+}
+#contact-details{
+    width: 74%;
+    height: 200px;
+    position: absolute;
+    bottom: -13%;
+    right: 0;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #e47312;
+    background-image: linear-gradient(186deg, #e47312, #ff6361);
+}
+.contact-div{
+    padding: 30px 0;
+    text-align: center;
+}
+.contact-div h4{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.contact-div i{
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.contact-div p{
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    color: hsla(0, 0%, 100%, 0.7);
+    font-family: Dosis, sans-serif;
+}
+#find-map{
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-top: 30px;
+    padding-bottom: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 300ms ease;
+    border-bottom: 2px solid transparent;
+}
+#find-map:hover{
+    border-bottom: 2px solid #fff;
+}
+.social{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 15px;
+    margin: 0 auto;
+    color: white;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.14);
+    cursor: pointer;
+}
+.social-icons{
+    position: absolute;
+    padding: 9px 0;
+    width: 5%;
+    background-color: #0a1229;
+    transform: translateY(-100%);
+    right: 0;
+    bottom: -19%;
+}
+#insta{
+    border: none;
+}
+#special-serv{
+    position: absolute;
+    top: 65px;
+    
+}
+#special-serv {
+    width: calc(100vw - 5%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+#service-section{
+    position: relative;
+    height: 90vh;
+}
+#special-serv h2{
+    margin: 0;
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #121213;
+    margin-left: 5%;
+}
+#special-serv p{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color:rgb(145, 145, 152);
+    margin-right: 5%;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    transition: all 200ms;
+    border-bottom: 2px solid transparent;
+}
+#special-serv p:hover{
+    border-bottom: 2px solid #e47312;
+}
+#services{
+    color: rgba(241, 241, 247, 0.4);
+    font-weight: 600;
+    font-size: 120px;
+    letter-spacing: 11px;
+    position: relative;
+    
+}
+.service-img{
+    width: 60px;
+    margin-bottom: 20px;
+}
+.service-header{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.service-desc{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-family: Dosis, sans-serif;
+    color: #919197;
+    font-size: 17px;
+    line-height: 25px;
+}
+.service-more{
+    color: #919198;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 200ms;
+    border-bottom: 2px solid transparent;
+}
+.service-more:hover{
+    border-bottom: 2px solid #e47312;
+}
+#service-sec-div{
+    display: flex;
+    margin-left: 4%;
+    margin-right: 4%;
+    justify-content: center;
+}
+#article1{
+    width: 24%;
+    padding: 0 18px;
+}
+#article2{
+    width: 24%;
+    padding: 0 18px;
+}
+#article3{
+    width: 24%;
+    padding: 0 18px;
+}
+#article4{
+    width: 24%;
+    padding: 0 18px;
+}
+#about{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 90vh;
+}
+#about-image{
+    width: 550px;
+}
+#about-image-div{
+    margin-left: 5%;
+    margin-top: 9%;
+    
+}
+#about-details{
+    margin-top: 3%;
+    margin-right: 12%;
+    margin-left: 4%;
+    width: 100%;
+}
+#about-header-section{
+    position: relative;
+}
+#about-header-section h2{
+    
+    color: rgba(241, 241, 247, 0.4);
+    font-weight: 600;
+    font-size: 120px;
+    letter-spacing: 11px;
+    margin: 0;
+}
+#about-desc{
+    position: absolute;
+    top: 43%;
+    left: 13%;
+    width: 100%;
+}
+#about-desc h3{
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: 1px;
+    margin-bottom: 7%;
+}
+#about-desc p{
+    margin-top: 0;
+    color: #919197;
+    font-size: 17px;
+    line-height: 25px;
+
+}
+#about-desc a{
+    color: #919198;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: all 200ms;
+    border-bottom: 2px solid transparent;
+}
+#about-desc a:hover{
+    border-bottom: 2px solid #e47312;
+}
+#facts{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.facts-article{
+    box-sizing: border-box;
+    padding-right: 10%;
+}
+.facts-article h2{
+    margin-bottom: 10px;
+    color: #e47312;
+    font-size: 60px;
+    /* line-height: 70px; */
+    font-weight: 500;
+}
+.facts-article p{
+    margin-bottom: 10px;
+    color: #919197;
+    font-size: 17px;
+    line-height: 25px;
+}
+#projects{
+    background-color: #F7F8FC;
+    padding-bottom: 50px;
+}
+#projects-header h2{
+    color: rgba(241, 241, 247, 0.4);
+    font-weight: 600;
+    font-size: 120px;
+    letter-spacing: 11px;
+    margin: 0;
+    padding: 8px;
+}
+#projects-header{
+    position: relative;
+}
+#projects-desc{
+    display: flex;
+    position: absolute;
+    bottom: 15%;
+    justify-content: space-between;
+    
+    width: 100%;
+    align-items: center;
+}
+#projects-desc h3{
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 5%;
+}
+#projects-desc a{
+    color: #919198;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 5px;
+    margin-right: 3%;
+    transition: all 200ms;
+    border-bottom: 2px solid transparent;
+}
+#projects-desc a:hover{
+    border-bottom: 2px solid #e47312;
+}
+#cards{
+    width: 100%;
+    margin: 80px auto 8px auto;
+}
+.card-image{
+    max-width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+}
+.project-items {
+    width: calc(33.33% - 30px);
+    display: inline-block;
+    margin: 8px;
+}
+
+.project-content {
+    position: relative;
+    max-width: 100%;
+}
+
+.project-details {
+    position: relative;
+    overflow: hidden;
+}
+.project-overlay {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.project-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    box-sizing: border-box;
+    background-image: linear-gradient(59deg, #ff6361, #e47312);
+    padding-left: 11px;
+    padding-right: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.project-items:hover .project-overlay{
+    opacity: 1;
+}
+.project-items:hover .project-circle {
+    opacity: 1;
+}
+#working-together{
+    padding-top: 7%;
+    padding-bottom: 7%;
+    background-color: #e47312;
+    background-image: linear-gradient(72deg, #e47312, rgba(255, 99, 97, 0.78)), url("https://nuuk-e3eaa.firebaseapp.com/assets/img/banner-2.jpg");
+    background-position: 0px 0px, 50% 50%;
+    background-size: auto, cover;
+    background-repeat: repeat, no-repeat;
+    background-attachment: scroll, fixed;
+}
+#working-container{
+    width: 1200px;
+    height: 150px;
+    margin: 0 auto;
+    text-align: center;
+}
+#working-container h3{
+    position: relative;
+    z-index: 2;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 42px;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 600;
+}
+#working-container p{
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    color: hsla(0, 0%, 100%, 0.7);
+}
+#working-container a{
+    display: inline-block;
+    margin-top: 4%;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 200ms;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+#working-container a:hover{
+    
+    border-bottom: 2px solid #fff;
+}
+#team h2{
+    color: rgba(241, 241, 247, 0.75);
+    font-size: 120px;
+    letter-spacing: 11px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+#team{
+    position: relative;
+}
+#team-headers{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+#team-headers h3{
+    margin: 0;
+    font-size: 42px;
+    line-height: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 4%;
+}
+#team-headers p{
+    color: #919198;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 4%;
+    padding-bottom: 5px;
+    transition: all 200ms;
+    border-bottom: 2px solid transparent;
+}
+#team-headers p:hover{
+    border-bottom: 2px solid #e47312;   
+}
+#directors{
+    display: flex;
+    margin: 5% 2%;
+}
+.team img{
+    width: 100%;
+}
+.team{
+    margin: 0 2%;
+    background-color: white;
+    position: relative;
+}
+.title{
+    padding-left: 40px;
+}
+.title h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 17px;
+    color: #121213;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.title p{
+    margin: 0;
+    color: #bdbdc9;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.team-social-icons{
+    position: absolute;
+    padding: 0 9px;
+    width: 12%;
+    background-color: #e47312;
+    transform: translateY(-100%);
+    right: 0;
+}
+.linkedin{
+    border: none;
+}
+#testimonials{
+    display: flex;
+}
+#testimonial-header-section h2{
+    color: rgba(241, 241, 247, 0.75);
+    font-size: 120px;
+    letter-spacing: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+#testimonial-header-section{
+    position: relative;
+}
+#testimonial-desc{
+    position: absolute;
+    top: 18%;
+    margin-left: 12%;
+}
+#testimonial-desc h3{
+    font-size: 42px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #121213;
+}
+#testimonial-desc p{
+    margin-top: 0;
+    margin-bottom: 5%;
+    color: #919197;
+    font-size: 17px;
+    line-height: 25px
+}
+#testimonial-desc a{
+    color: #919198;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 200ms;
+}
+#testimonial-desc a:hover{
+    border-bottom: 2px solid #e47312;   
+}
+.testimony-desc{
+    margin: 8% 8%;
+    padding: 80px 30px 26px;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+}
+.testimony{
+    display: flex;
+    flex-wrap: wrap;
+}
+#left-col{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+#right-col{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding-top: 100px;
+}
+.testimony-desc h3{
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: #121213;
+}
+.testimony-desc h4{
+    margin-bottom: 0px;
+    color: #bdbdc9;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 400;
+}
+.testimony-desc p{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    color: #919197;
+    font-size: 17px;
+    text-align: center;
+    line-height: 25px;
+    font-weight: 400;
+}
+.comma{
+    position: absolute;
+    top: 0;
+    left: calc(50% - 30px );
+    transform: translateY(-50%);
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    background-image: linear-gradient(8deg, #ff6361, #e47312);
+    color: #fff;
+    font-size: 80px;
+    font-weight: 400;
+}
+#blog-header h2{
+    color: rgba(241, 241, 247, 0.4);
+    font-size: 120px;
+    letter-spacing: 11px;
+    font-weight: 600;
+    
+    margin: 0;
+    text-transform: uppercase;
+}
+#blog-header{
+    position: relative;
+}
+#blog-desc{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 95%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    bottom: 15%;
+    padding-left: 6%;
+    padding-right: 1%;
+}
+#blog-desc h3{
+    color: #121213;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+#blog-desc a{
+    color: #919198;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    padding-bottom: 5px;
+    transition: all 200ms;
+    border-bottom: 2px solid transparent;
+}
+#blog-desc a:hover{
+    border-bottom: 2px solid #e47312;
+}
+#blog-cards-section{
+    display: flex;
+    justify-content: center;
+}
+.blog-cards{
+    width: 28%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+    cursor: pointer;
+    position: relative;
+}
+.blog-cards img{
+    width: 100%;
+}
+.blog-cards-desc-wrapper{
+    margin: 0;
+    color: #fff;
+    padding: 0 56px 25px 30px;
+    background-color: #e47312;
+    background-image: linear-gradient(158deg, #e47312, #ff6361);
+}
+.blog-cards-desc-wrapper h4{
+    margin-bottom: 15px;
+    font-size: 19px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.blog-cards-desc-wrapper p{
+    margin-bottom: 5px;
+    color: hsla(0, 0%, 100%, 0.7);
+    font-size: 17px;
+}
+.blog-cards-desc-wrapper a{
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    font-weight: 600;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.397);
+    transition: all 200ms;
+}
+.blog-cards-desc-wrapper a:hover{
+    border-bottom: 2px solid white;
+}
+.dates{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+}
+.dates .one {
+    width: 70px;
+    height: 70px;
+    background-image: linear-gradient(45deg, #ff6361, #e47312);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dates .two{
+    display: flex;
+    width: 70px;
+    height: 40px;
+    background-color: #fff;
+    color: #9d9da5;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    align-items: center;
+    justify-content: center;
+}
+#trust-logo{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(56deg, #e47312, #ff6361);
+    margin-top: 100px;
+}
+.img-logo{
+    width: 100px;
+    cursor: pointer;
+}
+#top-cmp{
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+footer{
+    display: flex;
+    background-color: #0a1229;
+    margin: 0 6%;
+    height: 90vh;
+    color: #fff;
+    position: relative;
+}
+.footer{
+    width: 33%;
+    padding: 5% 5% 0 5%;
+    
+}
+.footer p{
+    font-size: 17px;
+    line-height: 25px;
+    margin-bottom: 40px;
+    margin-top: 0;
+}
+.fts{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+.footer-header{
+    margin: 0;
+    padding-right: 14px;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.dash{
+    height: 2px;
+    width: 150px;
+    background-color: rgb(247, 46, 79);
+}
+.underlined-serv{
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 20px;
+    transition: all 200ms;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-bottom: 2px solid transparent;
+}
+.underlined-serv:hover{
+    border-bottom: 2px solid white;
+}
+.footer i{
+    margin-right: 10px;
+}
+.contact-div-footer{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.contact-div-footer h4{
+    margin: 0;
+}
+.contact-descr{
+    color: hsla(0, 0%, 100%, 0.7);
+    font-size: 17px;
+    margin-left: 10%;
+}
+#footer-logo{
+    position: absolute;
+    background-color: #e47312;
+    padding: 35px 35px;
+    bottom: 0px;
+    left: 5%;
+}
+#footer-logo img{
+    width: 90px;
+}
+@media (max-width:400px){
+    body{
+        margin: 0;
+    }
+    #navbar{
+        flex-direction: column;
+        width: auto;
+        margin: 0;
+        left: 0;
+    }
+    .verticle-line-wrapper{
+        display: none;
+    }
+    .menu{
+        display: none;
+    }
+    #free-quote{
+        display: none;
+    }
+    #logo-div{
+        top: 0;
+        left: 0;
+        height: 50px;
+    }
+    #landing-section{
+        position: relative;
+        padding: 0;
+        width: 100%;
+        height: 500px;
+        box-sizing: border-box;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .social-icons{
+        bottom: -46%;
+        right: 0;
+        width: auto;
+    }
+    #heading-section h1{
+        font-size: 32px;
+        font-weight: 600;
+        padding: 20px;
+        letter-spacing: 1px;
+    }
+    #heading-section p{
+        padding: 20px;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    #heading-section button{
+        margin-top: 20%;
+        margin-left: 20px;
+    }
+    #contact-details{
+        display: none;
+    }
+    #service-sec-div{
+        flex-direction: column;
+        margin: 0 10px;
+    }
+    #service-section{
+        position: static;
+        height: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 2% 4%;
+    }
+    #services{
+        display: none;
+    }
+    #special-serv{
+        position: static;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 20px;
+    }
+    #special-serv h2{
+        font-size: 23px;
+        margin: 0; 
+    }
+    #special-serv p{
+        margin: 0;
+        font-size: 13px;
+    }
+    #article1, #article2, #article3, #article4 {
+        width: 85%;
+        padding: 0;
+        margin: 22px auto;
+    }
+    .service-desc{
+        font-size: 17px;
+        line-height: 20px;
+    }
+    .service-img {
+        width: 50px;
+        margin-bottom: 10px;
+    }
+    .service-more{
+        font-size: 13px;
+    }
+    #about-image{
+        width: 100%;
+    }
+    #about{
+        flex-direction: column;
+        height: auto;
+        padding: 5% 5%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #about-image-div{
+        width: 84%;
+        margin: 0 auto;
+    }
+    #about-header-section{
+        position: static;
+    }
+    #about-header{
+        display: none;
+    }
+    #about-desc{
+        position: static;
+    }
+    #about-desc h3{
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+    #about-desc p{
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 0;
+        text-align: justify;
+    }
+    #about-desc a{
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    #about-details{
+        margin:0;
+        box-sizing: border-box;
+        padding-top: 20px;
+    }
+    #facts, #projects{
+        margin: 0;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5% 5%;
+    }
+    .facts-article{
+        padding: 0;
+    }
+    .facts-article h2{
+        margin-top: 10px;
+        font-size: 44px;
+    }
+    .facts-article p{
+        margin-top: 10px;
+        font-size: 18px;
+    }
+    #projects-header h2{
+        display: none;
+    }
+    #projects-desc{
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #projects-desc h3{
+        padding: 0;
+        font-size: 32px;
+    }
+    #projects-desc a{
+        padding: 0;
+        margin: 0;
+        margin: 10px 0;
+    }
+    #cards{
+        margin:0 auto;
+        width: 100%;
+    }
+    .project-grid {
+        display: flex;
+        flex-direction: column;
+    }
+    .project-items{
+        width: 100%;
+        margin: 4% 0;
+    }
+    #working-together{
+        padding: 4%;
+        margin: 0;
+    }
+    #working-container{
+        width: 100%;
+        height: auto;
+    }
+    #working-container h3{
+        font-size: 22px;
+        line-height: 30px
+    }
+    #working-container p{
+        font-size: 16px;
+    }
+    #working-container a{
+        font-size: 11px;
+    }
+    #team-headers{
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #team{
+        position: static;
+        margin-top: 2%;
+        padding: 4% 0;
+    }
+    #team h2{
+        display: none;
+    }
+    #team-headers h3{
+        padding: 0;
+        font-size: 26px;
+    }
+    #team-headers p{
+        margin: 0;
+        font-size: 14px;
+    }
+    #directors{
+        margin: 2% 0;
+        flex-direction: column;
+    }
+    .team{
+        margin: 4% auto;
+        width: 90%;
+        height: auto;
+    }
+    #testimonials{
+        flex-direction: column;
+    }
+    #testimonial-header-section{
+        position: static;
+    }
+    #testimonial-header-section h2{
+        display: none;
+    }
+
+    #testimonial-desc {
+        position: static;
+        margin-left: 0;
+    }
+    #testimonial-desc h3{
+        font-size: 26px;
+        margin-bottom: 2%;
+    }
+    #testimonial-desc p{
+        font-size: 17px;
+        text-align: justify;
+        margin-bottom: 2%;
+    }
+    #testimonial-desc a{
+        font-size: 14px;
+        display: inline-block;
+    }
+    .testimony{
+        flex-direction: column;
+        margin-top: 4%;
+    }
+    #left-col, #right-col{
+        width: 85%;
+        padding: 0;
+        margin: 0 auto;
+    }
+    .testimony-desc {
+        margin: 10% 0;
+        padding: 50px 25px 30px;
+    }
+    .testimony-desc h3{
+        margin-bottom: 0;
+    }
+    .testimony-desc h4{
+        font-size: 15px;
+        margin-top: 2%;
+    }
+    .testimony-desc p{
+        margin-top: 2%;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    #blog-header {
+        position: static;
+    }
+    #blog-header h2{
+        display: none;
+    }
+    #blog{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5% 5%;
+    }
+    #blog-desc{
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2%;
+    }
+    #blog-desc h3{
+        font-size: 26px;
+    }
+    #blog-desc a{
+        margin: 3% 0;
+        font-size: 14px;
+    }
+    #blog-cards-section {
+        flex-direction: column;
+    }
+    .blog-cards {
+        width: 90%;
+        margin: 5% auto;
+        height: auto;
+    }
+    .blog-cards-desc-wrapper h4 {
+        margin-bottom: 0px;
+        font-size: 17px;
+    }
+    .blog-cards-desc-wrapper p{
+        font-size: 16px;
+        text-align: justify;
+    }
+    #trust-logo{
+        margin-top: 10%;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 5% 0;
+    }
+    #trust-logo div{
+        margin: 5% ;
+    }
+    #top-cmp{
+        font-size: 14px;
+    }
+    .img-logo {
+        width: 80px;
+    }
+    footer {
+        flex-direction: column;
+        margin: 0;
+        padding-bottom: 15%;
+        height: 820px;
+        width: 100%;
+        padding: 5% 5%;
+        box-sizing: border-box;
+    }
+    .footer{
+        width: 300px;
+        padding: 4% 4% 4% 4%;
+    }
+    .footer-header{
+        font-size: 16px;
+    }
+    .fts{
+        width: 90%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    .footer p {
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-bottom: 6%;
+    }
+    .underlined-serv{
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-bottom: 4%;
+    }
+    .contact-div-footer{
+        font-size: 12px;
+    }
+    #footer-logo {
+        padding: 16px 30px;
+        left: 4%;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="navbar">
+              <div class="verticle-line-wrapper"><div class="verticle-line"><a id="home" class="menu">HOME</a></div></div>
+              <div class="verticle-line-wrapper"><div class="verticle-line"><a class="menu">PROJECTS</a></div></div>
+              <div class="verticle-line-wrapper"><div class="verticle-line"><a class="menu">ABOUT</a></div></div>
+              <div class="verticle-line-wrapper"><div class="verticle-line"><a class="menu">SERVICES</a></div></div>
+              <div class="verticle-line-wrapper"><div class="verticle-line"><a class="menu">BLOG</a></div></div>
+                <div class="verticle-line-wrapper"><div class="verticle-line"><div id="pages-dropdown-wrapper">
+                    <a class="menu">PAGES<i class="fas fa-caret-down dropdown"></i></a>
+                    <div id="pages-dropdown">
+                        <span>404 Error Page</span>
+                        <span>Protected Page</span>
+                        <span>Style Guide</span>
+                        <span>Licensing</span>
+                    </div>
+                </div></div></div>
+                <button id="free-quote">GET FREE QUOTE</button>
+                <div id="logo-div">
+                    <img class="logo" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-white.png" alt="logo">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="landing-section">
+            <div class="social-icons">
+              <span class="social"><i class="fab fa-facebook-f"></i></span>
+              <span class="social"><i class="fab fa-twitter"></i></span>
+              <span class="social"><i class="fab fa-linkedin-in"></i></span>
+              <span class="social" id="insta"><i class="fab fa-instagram"></i></span>
+            </div>
+            <div id="heading-section">
+                <h1>YOU DREAM. WE CREATE.</h1>
+                <p>We turn your ideas to reality, we don't stop until you're satisfied.</p>
+                <button>GET FREE QUOTE</button> 
+            </div>
+            <div id="contact-details">
+                <div class="contact-div">
+                    <i class="fas fa-phone-alt"></i><br>
+                    <h4>PHONE NUMBER</h4>
+                    <p>1-800-506-266</p>
+                    <p>1-100-777-800</p>
+                </div>
+                <div class="contact-div">
+                    <i class="far fa-envelope"></i><br>
+                    <h4>CONTACT</h4>
+                    <p>contact@nuuk.com</p>
+                    <p>info@nuuk.com</p>
+                </div>
+                <div class="contact-div">
+                    <i class="far fa-clock"></i><br>
+                    <h4>OPENING TIMES</h4>
+                    <p>Mon - Sat 8:00 - 17:30, Sunday - Closed</p><br>
+                    <a id="find-map">FIND ON MAP</a>
+                </div>
+                
+            </div>
+        </section>
+        <section id="service-section">
+            <h2 id="services">SERVICES</h2>
+            <div id="special-serv">
+                <h2>OUR SPECIALIZATION</h2>
+                <p>VIEW ALL SERVICES</p>
+            </div>
+            <div id="service-sec-div">
+                <article id="article1" class="service-sections">
+                    <img class="service-img" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/brickwall.svg" alt="brickwall">
+                    <h4 class="service-header">Renovation</h4>
+                    <p class="service-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+                    <a class="service-more">Learn More</a>
+                </article>
+                <article id="article2" class="service-sections">
+                    <img class="service-img" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/set-square.svg" alt="set-square">
+                    <h4 class="service-header">Architecture</h4>
+                    <p class="service-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+                    <a class="service-more">Learn More</a>
+                </article>
+                <article id="article3" class="service-sections">
+                    <img class="service-img" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/toolbox.svg" alt="toolbox">
+                    <h4 class="service-header">Construction</h4>
+                    <p class="service-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+                    <a class="service-more">Learn More</a>
+                </article>
+                <article id="article4" class="service-sections">
+                    <img class="service-img" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/paint-roller.svg" alt="paint-roller">
+                    <h4 class="service-header">Financial Results</h4>
+                    <p class="service-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+                    <a class="service-more">Learn More</a>
+                </article>
+            </div>
+        </section>
+        <section id="about">
+            <div id="about-image-div">
+                <img id="about-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/serv-1.jpg" alt="service">
+            </div>
+            <div id="about-details">
+                <div id="about-header-section"><h2 id="about-header">About</h2>
+                <div id="about-desc">
+                    <h3>WHO WE ARE</h3>
+                    <p>Based on collective work and shared knowledge, Nuuk aims to favor dialogue and debate, to transform individual knowledge into increased creative potential.</p><br>
+                    <p>Our studio is a architecture practice based in NY and Paris. Today, it includes 150 architects, urban planners, landscape and interior designers of 25 different nationalities. The company principle of Architecture-Studio is the collective conception. From the very beginning, the practice has believed in the virtues of exchange, crossing ideas, common effort, shred knowledge.</p>
+                    <a >Meet The Team</a>
+                </div>
+                </div>
+            </div>
+        </section>
+        <section id="facts">
+            <article class="facts-article">
+                <h2>170</h2>
+                <p>Employer with over 10 years of experience</p>
+            </article>
+            <article class="facts-article">
+                <h2>10</h2>
+                <p>Years experience in construction industries</p>
+            </article>
+            <article class="facts-article">
+                <h2>690</h2>
+                <p>Residential premises completed in 2019</p>
+            </article>
+            <article class="facts-article">
+                <h2>7.1</h2>
+                <p>Milion dollar value on investments</p>
+            </article>
+        </section>
+        <section id="projects">
+            <div id="projects-header"><h2>PROJECTS</h2>
+                <div id="projects-desc">
+                    <h3>Our Work</h3>
+                    <a>View All Works</a>
+                </div>
+            </div>
+            <div id="cards">
+                <div class="project-grid">
+                    <div>
+                      <div class="project-items">
+                        <a href="#" class="project-content">
+                          <div class="project-details">
+                            <img id="card-image1" class="card-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/p-1.jpg" alt="cards">
+                            <div class="project-overlay">
+                              <div class="project-circle">
+                                <div>View project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="project-items">
+                        <a href="#" class="project-content">
+                          <div class="project-details">
+                            <img id="card-image2" class="card-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/p-4.jpg" alt="cards">
+                            <div class="project-overlay">
+                              <div class="project-circle">
+                                <div>View project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="project-items">
+                        <a href="#" class="project-content">
+                          <div class="project-details">
+                            <img id="card-image3" class="card-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/p-3.jpg" alt="cards">
+                            <div class="project-overlay">
+                              <div class="project-circle">
+                                <div>View project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="project-items">
+                        <a href="#" class="project-content">
+                          <div class="project-details">
+                            <img id="card-image4" class="card-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/p-6.jpg" alt="cards">
+                            <div class="project-overlay">
+                              <div class="project-circle">
+                                <div>View project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="project-items">
+                        <a href="#" class="project-content">
+                          <div class="project-details">
+                            <img id="card-image5" class="card-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/p-5.jpg" alt="cards">
+                            <div class="project-overlay">
+                              <div class="project-circle">
+                                <div>View project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="project-items">
+                        <a href="#" class="project-content">
+                          <div class="project-details">
+                            <img id="card-image6" class="card-image" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/p-2.jpg" alt="cards">
+                            <div class="project-overlay">
+                              <div class="project-circle">
+                                <div>View project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div id="working-together">
+                <div id="working-container">
+                    <h3>LET'S MAKE SOMETHING GREAT TOGETHER</h3>
+                    <p>Get in touch with us and send some basic info for a quick quote.</p>
+                    <a >GET FREE QUOTE</a>
+                </div>
+            </div>
+            <div id="team">
+                <h2>Team</h2>
+                <div id="team-headers">
+                    <h3>Professionals</h3>
+                    <p>About us</p>
+                </div>
+            </div>
+            <div id="directors">
+                <article class="team">
+                    <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/team-1.jpg" alt="director">
+                    <div class="title">
+                        <h3>Philip Brower</h3>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="team-social-icons">
+                        <span class="social"><i class="fab fa-facebook-f"></i></span>
+                        <span class="social"><i class="fab fa-twitter"></i></span>
+                        <span class="social linkedin"><i class="fab fa-linkedin-in"></i></span>
+                    </div>
+                </article>
+                <article class="team">
+                    <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/team-2.jpg" alt="director">
+                    <div class="title">
+                        <h3>John Wick</h3>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="team-social-icons">
+                        <span class="social"><i class="fab fa-facebook-f"></i></span>
+                        <span class="social"><i class="fab fa-twitter"></i></span>
+                        <span class="social linkedin"><i class="fab fa-linkedin-in"></i></span>
+                    </div>
+                </article>
+                <article class="team">
+                    <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/team-3.jpg" alt="director">
+                    <div class="title">
+                        <h3>Jimmy Mcgill</h3>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="team-social-icons">
+                        <span class="social"><i class="fab fa-facebook-f"></i></span>
+                        <span class="social"><i class="fab fa-twitter"></i></span>
+                        <span class="social linkedin"><i class="fab fa-linkedin-in"></i></span>
+                    </div>
+                </article>
+                <article class="team">
+                    <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/team-4.jpg" alt="director">
+                    <div class="title">
+                        <h3>Philip Brower</h3>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="team-social-icons">
+                        <span class="social"><i class="fab fa-facebook-f"></i></span>
+                        <span class="social"><i class="fab fa-twitter"></i></span>
+                        <span class="social linkedin"><i class="fab fa-linkedin-in"></i></span>
+                    </div>
+                </article>
+            </div>
+            <div id="testimonials">
+                <div id="testimonial-header-section">
+                    <h2>Clients</h2>
+                    <div id="testimonial-desc">
+                        <h3>Testimonials</h3>
+                        <p>Aenean ut eros et nisl sagittis vestibulum. Fusce neque. Praesent blandit laoreet nibh. Morbi mollis tellus ac sapien.</p>
+                        <a >Our Services</a>
+                    </div>
+                </div>
+                <div class="testimony">
+                    <div id="left-col">
+                      <article class="testimony-desc">
+                          <h3>SARA WILLIAM</h3>
+                          <h4>CEO at Webflow</h4>
+                          <p>"Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet"</p>
+                          <div class="comma">"</div>
+                      </article>
+                      <article class="testimony-desc">
+                          <h3>JOHN JUNIOR</h3>
+                          <h4>Manager at Complexx</h4>
+                          <p>"Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Cras varius. Etiam sit amet orci eget eros faucibus tincidunt. Fusce a quam"</p>
+                          <div class="comma">"</div>
+                      </article>
+                    </div>
+                    <div id="right-col">
+                      <article class="testimony-desc">
+                        <h3>RAVEN DURGAN</h3>
+                        <h4>Architect at Group</h4>
+                        <p>"Aliquam eu nunc. Cras dapibus. Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl"</p>
+                        <div class="comma">"</div>
+                      </article>
+                      <article class="testimony-desc">
+                          <h3>SAMI TYPO</h3>
+                          <h4>SEO at Balfin</h4>
+                          <p>"Vestibulum fringilla pede sit amet augue. Morbi ac felis. Ut a nisl id ante tempus hendrerit"</p>
+                          <div class="comma">"</div>
+                      </article>
+                    </div>
+                </div>
+            </div>
+            </section>
+            <section id="blog">
+              <div id="blog-header">
+                <h2>Blog</h2>
+                  <div id="blog-desc">
+                    <h3>Latest News</h3>
+                    <a>view blog</a>
+                  </div>
+              </div>
+              <div id="blog-cards-section">
+                <article class="blog-cards">
+                  <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/port-1.jpg" alt="blog1">
+                  <div class="dates">
+                    <div class="one">17</div>
+                    <div class="two">OCT</div>
+                  </div>
+                  <div class="blog-cards-desc-wrapper">
+                    <h4>Blogpost 1</h4>
+                    <p>Service and providing potential clients and customers with testimonials is one of the  ways to market.</p>
+                    <a >read more</a>
+                  </div>
+                </article>
+                <article class="blog-cards">
+                  <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/port-2.jpg" alt="blog1">
+                  <div class="dates">
+                    <div class="one">11</div>
+                    <div class="two">DEC</div>
+                  </div>
+                  <div class="blog-cards-desc-wrapper">
+                    <h4>Blogpost 2</h4>
+                    <p>Service and providing potential clients and customers with testimonials is one of the  ways to market.</p>
+                    <a >read more</a>
+                  </div>
+                </article>
+                <article class="blog-cards">
+                  <img src="https://nuuk-e3eaa.firebaseapp.com/assets/img/port-3.jpg" alt="blog1">
+                  <div class="dates">
+                    <div class="one">27</div>
+                    <div class="two">OCT</div>
+                  </div>
+                  <div class="blog-cards-desc-wrapper">
+                    <h4>Blogpost 3</h4>
+                    <p>Service and providing potential clients and customers with testimonials is one of the  ways to market.</p>
+                    <a >read more</a>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <section id="trust-logo">
+              <div id="top-cmp">TRUSTED BY TOP COMPANIES</div>
+              <div><img class="img-logo" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-1w.png" alt="logo1"></div>
+              <div><img class="img-logo" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-2w.png" alt="logo2"></div>
+              <div><img class="img-logo" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-3w.png" alt="logo3"></div>
+              <div><img class="img-logo" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-4w.png" alt="logo4"></div>
+              <div><img class="img-logo" src="https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-5w.png" alt="logo5"></div>
+            </section>
+        </main>
+        <footer>
+          <div class="footer">
+            <div class="fts">
+            <h3 class="footer-header">ABOUT NUUK</h3>
+            <div class="dash"></div>
+            </div>
+            <p>Based on collective work and shared knowledge, Nuuk aims to favor dialogue and debate, to transform individual knowledge into increased creative potential.</p>
+            <a class="underlined-serv">FIND ON MAP</a>
+          </div>
+          <div class="footer">
+            <div class="fts">
+            <h3 class="footer-header">SERVICES</h3>
+            <div class="dash"></div>
+            </div>
+            
+            <a class="underlined-serv">FINANCIAL RESULTS</a><br>
+            <a class="underlined-serv">CONSTRUCTION</a><br>
+            <a class="underlined-serv">ARCHITECTURE</a><br>
+            <a class="underlined-serv">RENOVATION</a>
+          </div>
+          <div class="footer">
+            <div class="fts">
+            <h3 class="footer-header">CONTACT US</h3>
+            <div class="dash"></div>
+            </div>
+            <div class="contact-div-footer">
+              <i class="fas fa-phone-alt"></i>
+              <h4>PHONE NUMBER</h4>
+            </div>
+            <div class="contact-descr">
+              <p>1-800-506-266</p>
+            </div>
+            <div class="contact-div-footer">
+              <i class="far fa-clock"></i>
+              <h4>OPENING TIMES</h4>
+            </div>
+            <div class="contact-descr">
+              <p>Mon - Sat 8:00 - 17:30, Sunday - Closed</p>
+            </div>
+            <div class="contact-div-footer">
+              <i class="far fa-envelope"></i>
+              <h4>CONTACT</h4>
+            </div>
+            <div class="contact-descr">
+              <p>contact@nuuk.com</p>
+            </div>
+          </div>
+          <div id="footer-logo">
+            <img src="	https://nuuk-e3eaa.firebaseapp.com/assets/img/logo-white.png" alt="logo">
+          </div>
+        </footer>
+    </body>
+</html>
